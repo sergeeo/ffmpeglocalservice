@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Video Compressor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Sube un video para comprimir</h1>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Subir">
+    </form>
+    
+    <h2>Información del Sistema</h2>
+    <p><strong>Uso de CPU:</strong> {{ cpu_usage }}%</p>
+    <p><strong>Uso de Memoria:</strong> {{ memory_usage }}%</p>
+    <p><strong>Temperaturas del Núcleo:</strong> 
+      {% for temp in core_temps %}
+        <span>{{ temp }}°C{% if not loop.last %}, {% endif %}</span>
+      {% endfor %}
+    </p>
+  </body>
+</html>
+
